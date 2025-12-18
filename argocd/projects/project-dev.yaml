@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: dev 
+  name: dev
   namespace: argocd
 spec:
-  description: Development environment 
+  description: Dev environment
 
   sourceRepos:
-    - https://github.com/gchie/platform-gitops
-  
-  destination:
-    - namespace: dev 
-      server: 'https://kubernetes.default.svc'
-    
+    - https://github.com/gchie/demo-api
+    - https://github.com/gchie/demo-web
+
+  destinations:
+    - namespace: dev
+      server: https://kubernetes.default.svc
+
   clusterResourceWhitelist:
     - group: '*'
       kind: '*'
