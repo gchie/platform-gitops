@@ -5,19 +5,22 @@ metadata:
   namespace: argocd
 spec:
   project: dev
+
   source:
-    repoURL: 'https://github.com/gchie/demo-web'
+    repoURL: https://github.com/gchie/demo-web
     targetRevision: main
     path: helm/demo-web
     helm:
       valueFiles:
         - values.yaml
-destination:
-    server: 'https://kubernetes.default.svc'
+
+  destination:
+    server: https://kubernetes.default.svc
     namespace: dev
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-syncOptions:
-  - CreateNamespace=true
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
